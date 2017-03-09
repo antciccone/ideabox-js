@@ -18,9 +18,9 @@ function removeIdea(idea) {
   var ideaArray = idea.parentElement.children
   var storage = JSON.parse(localStorage.getItem('ideas'))
   for (var i = 0; i < storage.length; i++) {
-    if (storage[i].title.trim() === ideaArray[0].innerText) {
-      // storage.slice(i)
-      // localStorage.setItem('ideas', JSON.stringify(storage))
+    if (storage[i].title.trim() === ideaArray[0].innerText.trim()) {
+      storage.splice(i, 1)
+      localStorage.setItem('ideas', JSON.stringify(storage))
     }
   }
 }
