@@ -14,7 +14,6 @@ $('body').on('click', '.down', function(){
   checkQaulity(this)
 })
 
-
 $('.save-button').on('click', function(){
   var title = $('.title').val()
   var body  = $('.body').val()
@@ -22,9 +21,24 @@ $('.save-button').on('click', function(){
   idea.setLocalStorage()
 })
 
+$('.search').on('keyup', function(){
+  var filter = this.value.toUpperCase();
+  var search = $('.idea-container')
+  for (i = 0; i < search.length; i++) {
+    debugger;
+    td = search[i].getElementsByClassName('new-title-input')[0]
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        search[i].style.display = "";
+       } else {
+        search[i].style.display = "none";
+       }
+     }
+   }
+})
+
 function checkQaulity(quality) {
   var type = quality.parentElement.children[2].innerText
-  debugger;
   if (type === "quality: swill" && quality.className === "fa fa-arrow-circle-o-up up fa-2x") {
     quality.parentElement.children[2].innerText = "quality: plausible"
     updateStorage(quality, "plausible")
@@ -66,7 +80,7 @@ function retrieveIdeas(){
   if (localStorage.getItem('ideas') === null) {
     localStorage.setItem('ideas', '[]')
   } else {
-    var ideas = JSON.parse(localStorage.getItem('ideas'))
+    var ideas = JSON.parse(localStorage.getItem('ideas')).reverse()
     for (var i = 0; i < ideas.length; i++) {
       displayIdeas(ideas[i], i)
     }
