@@ -10,6 +10,10 @@ $('body').on('click', '.up', function(){
   checkQaulity(this)
 })
 
+$('body').on('click', '.down', function(){
+  checkQaulity(this)
+})
+
 
 $('.save-button').on('click', function(){
   var title = $('.title').val()
@@ -20,12 +24,19 @@ $('.save-button').on('click', function(){
 
 function checkQaulity(quality) {
   var type = quality.parentElement.children[2].innerText
-  if (type === "quality: swill") {
+  debugger;
+  if (type === "quality: swill" && quality.className === "fa fa-arrow-circle-o-up up fa-2x") {
+    quality.parentElement.children[2].innerText = "quality: plausible"
+    updateStorage(quality, "plausible")
+  } else if (type === "quality: plausible" && quality.className === "fa fa-arrow-circle-o-up up fa-2x") {
+    quality.parentElement.children[2].innerText = "quality: genius"
+    updateStorage(quality, "genius")
+  } else if (type === "quality: genius" && quality.className === "fa fa-arrow-circle-o-down down fa-2x") {
     quality.parentElement.children[2].innerText = "quality: plausible"
     updateStorage(quality, "plausible")
   } else if (type === "quality: plausible") {
-    quality.parentElement.children[2].innerText = "quality: genius"
-    updateStorage(quality, "genius")
+    quality.parentElement.children[2].innerText = "quality: swill"
+    updateStorage(quality, "swill")
   }
 }
 
