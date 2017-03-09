@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  // retrieveIdeas()
+  retrieveIdeas()
 });
 
 $('.save-button').on('click', function(){
@@ -18,7 +18,7 @@ function retrieveIdeas(){
 }
 
 function displayIdeas(idea, id) {
-  $('.list-container').prepend('<div class="list-item"' + 'id="' + id + '"><li class="title-style"><p class="new-title-input" contenteditable="true">' + idea.title + '</p><button type="button" class="remove-button btn"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button></li><li class="body-style"><p class="new-body-input" contenteditable="true">' + idea.body + '</p></li><div class="quality-style"><button type="button" class="upvote btn"></button><button type="button" class="downvote btn"></button><p class="quality">quality: ' + '<span class="quality-value">' + idea.quality + '</span>' + '</p></div></div>');
+  $('.list-container').prepend('<div class="list-item"' + 'id="' + id + '"><li class="title-style"><p class="new-title-input" contenteditable="true">' + idea.idea + '</p><i class="fa fa-times-circle-o" aria-hidden="true"></i></li><li class="body-style"><p class="new-body-input" contenteditable="true">' + idea.body + '</p></li><div class="quality-style"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i><p class="quality">quality: ' + '<span class="quality-value">' + idea.quality + '</span>' + '</p></div></div>');
 }
 
 
@@ -30,6 +30,6 @@ function Idea(title, idea) {
 Idea.prototype.setLocalStorage = function(){
   localStorage.setItem('ideas', '[]')
   var storage = JSON.parse(localStorage.getItem('ideas'));
-  storage.unshift({title: this.title, idea: this.idea})
+  storage.unshift({title: this.title, idea: this.idea, quality: 'swill'})
   localStorage.setItem('ideas', JSON.stringify(storage))
 }
