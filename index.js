@@ -3,7 +3,7 @@ $(document).ready(function(){
 });
 
 $('body').on('click', '.delete', function(){
-  removeFromStorage(this)
+  removeIdea(this)
 })
 
 $('.save-button').on('click', function(){
@@ -13,14 +13,14 @@ $('.save-button').on('click', function(){
   idea.setLocalStorage()
 })
 
-function removeFromStorage(idea) {
+function removeIdea(idea) {
+  idea.parentElement.remove()
   var ideaArray = idea.parentElement.children
   var storage = JSON.parse(localStorage.getItem('ideas'))
   for (var i = 0; i < storage.length; i++) {
-    if (storage[i].title === ideaArray[0].innerText) {
-      storage.slice(i)
-      debugger;
-      localStorage.setItem('ideas', storage)
+    if (storage[i].title.trim() === ideaArray[0].innerText) {
+      // storage.slice(i)
+      // localStorage.setItem('ideas', JSON.stringify(storage))
     }
   }
 }
