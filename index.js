@@ -22,7 +22,11 @@ $('.save-button').on('click', function(){
 })
 
 $('body').on("blur", ".new-title-input", function(){
-  debugger;
+  editIdea(this)
+})
+
+$('body').on("blur", ".new-body-input", function(){
+  editIdea(this)
 })
 
 $('.search').on('keyup', function(){
@@ -40,6 +44,19 @@ $('.search').on('keyup', function(){
      }
    }
 })
+
+function editIdea(idea) {
+  var storage = JSON.parse(localStorage.ideas)
+  for (var i = 0; i < storage.length; i++) {
+    if (idea.className === "new-title-input" && storage[i].idea === idea.parentElement.children[2].innerText) {
+      storage[i].title = idea.parentElement.children[0].innerText
+      localStorage.setItem('ideas', JSON.stringify(storage))
+    } else if (idea.className === "new-body-input" && storage[i].title.trim() === idea.parentElement.children[0].innerText.trim()) {
+      storage[i].idea = idea.parentElement.children[2].innerText
+      localStorage.setItem('ideas', JSON.stringify(storage))
+    }
+  }
+}
 
 function checkQaulity(quality) {
   var type = quality.parentElement.children[2].innerText
@@ -92,7 +109,8 @@ function retrieveIdeas(){
 }
 
 function displayIdeas(idea, id) {
-  $('.list-container').prepend('<div class="idea-container"><p class="new-title-input" contenteditable="true">' + idea.title + '</p><i class="fa fa-times-circle-o delete fa-2x"" aria-hidden="true"></i><p class="new-body-input" contenteditable="true">' + idea.idea + '</p><div class="quality-style"><i class="fa fa-arrow-circle-o-up up fa-2x"" aria-hidden="true"></i><i class="fa fa-arrow-circle-o-down down fa-2x"" aria-hidden="true"></i><p class="quality">quality: ' + '<span class="quality-value">' + idea.quality + '</span>' + '</p></div></div>');
+  var section = $('.list-container').prepend('<div id='+id+' class="idea-container"><p class="new-title-input" contenteditable="true">' + idea.title + '</p><i class="fa fa-times-circle-o delete fa-2x"" aria-hidden="true"></i><p class="new-body-input" contenteditable="true">' + idea.idea + '</p><div class="quality-style"><i class="fa fa-arrow-circle-o-up up fa-2x"" aria-hidden="true"></i><i class="fa fa-arrow-circle-o-down down fa-2x"" aria-hidden="true"></i><p class="quality">quality: ' + '<span class="quality-value">' + idea.quality + '</span>' + '</p></div></div>');
+
 }
 function Idea(title, idea) {
   this.title = title
@@ -103,5 +121,5 @@ Idea.prototype.setLocalStorage = function(){
   var storage = JSON.parse(localStorage.getItem('ideas'));
   storage.unshift({title: this.title, idea: this.idea, quality: 'swill'})
   localStorage.setItem('ideas', JSON.stringify(storage))
-  displayIdeas(storage[0])
+  displayIdeas(storage[0], JSON.parse(localStorage.getItem('ideas')).length + 1)
 }
