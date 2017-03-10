@@ -109,7 +109,7 @@ function retrieveIdeas(){
 }
 
 function displayIdeas(idea, id) {
-  var section = $('.list-container').prepend('<div id='+id+' class="idea-container"><p class="new-title-input" contenteditable="true">' + idea.title + '</p><i class="fa fa-times-circle-o delete fa-2x"" aria-hidden="true"></i><p class="new-body-input" contenteditable="true">' + idea.idea + '</p><div class="quality-style"><i class="fa fa-arrow-circle-o-up up fa-2x"" aria-hidden="true"></i><i class="fa fa-arrow-circle-o-down down fa-2x"" aria-hidden="true"></i><p class="quality">quality: ' + '<span class="quality-value">' + idea.quality + '</span>' + '</p></div></div>');
+  var section = $('.list-container').prepend('<div id='+id+' class="idea-container"><p class="new-title-input" contenteditable="true">' + idea.title + '</p><i class="fa fa-times-circle-o delete fa-2x"" aria-hidden="true"></i><p class="new-body-input" contenteditable="true">' + idea.idea + '</p></li><div class="quality-style"><i class="fa fa-arrow-circle-o-up up fa-2x"" aria-hidden="true"></i><i class="fa fa-arrow-circle-o-down down fa-2x"" aria-hidden="true"></i><p class="quality">quality: ' + '<span class="quality-value">' + idea.quality + '</span>' + '</p></div></div><hr>');
 
 }
 function Idea(title, idea) {

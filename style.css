@@ -1,3 +1,11 @@
+.idea-header {
+  color: #00a79d
+}
+
+.box {
+  color: #6d6e71;
+}
+
 .header-container {
   background-color: #e5f3f2;
   display: flex;
@@ -31,6 +39,31 @@
   cursor: pointer;
 }
 
+.delete:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.up {
+  color: #6d6e71
+}
+
+.down {
+  color: #6d6e71
+}
+.down {
+  color: #6d6e71
+}
+.up:hover {
+  color: green;
+  cursor: pointer;
+}
+
+.down:hover {
+  color: yellow;
+  cursor: pointer;
+}
+
 .input-container {
   flex-direction: column;
   flex-wrap: wrap;
@@ -61,4 +94,14 @@
 
 .idea-container {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+hr {
+  width: 50%;
+  color: #6d6e71;
 }
