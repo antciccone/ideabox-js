@@ -37,3 +37,28 @@
   margin-top: 20px;
   width: 60vw;
 }
+
+.search-container {
+  text-align: center;
+  padding-top: 8px;
+  flex-wrap: wrap;
+
+}
+
+.title {
+  height: 30px;
+}
+
+.body {
+  height: 30px;
+
+}
+
+.search {
+  height: 30px;
+  width: 60vw;
+}
+
+.idea-container {
+  text-align: center;
+}
