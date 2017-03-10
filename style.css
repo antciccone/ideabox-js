@@ -44,16 +44,10 @@
   cursor: pointer;
 }
 
-.up {
+.up, .down {
   color: #6d6e71
 }
 
-.down {
-  color: #6d6e71
-}
-.down {
-  color: #6d6e71
-}
 .up:hover {
   color: green;
   cursor: pointer;
@@ -94,11 +88,24 @@
 
 .idea-container {
   text-align: center;
-  display: flex;
+  /*display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: wrap;*/
+}
+
+.title-and-delete, .quality-style {
+  display: -webkit-inline-box;
+}
+
+.delete {
+  padding-top: 5px;
+}
+
+.new-title-input {
+  font-size: 20px;
+  color: #6d6e71
 }
 
 hr {
